@@ -8,7 +8,7 @@ class Hotel(models.Model):
     address = models.CharField(max_length=50)
     photo = models.ImageField()
     description = models.TextField()
-    city = models.ForeignKey(City, on_delete=models.CASCADE,)
+    city = models.ForeignKey(City, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
