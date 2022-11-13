@@ -21,6 +21,6 @@ from cities import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('cities/', include('cities.urls')),
-    path('cities/<int:id_city>/places/hotels/', include('places.urls')),
-    path('cities/<int:id_city>/places/hotels/<int:id_hotels>/reviews', include('reviews.urls'))
+    # path('cities/<int:id_city>/places/hotels/', include('places.urls')),
+    # path('cities/<int:id_city>/places/hotels/<int:id_hotels>/reviews', include('reviews.urls'))
 ]
