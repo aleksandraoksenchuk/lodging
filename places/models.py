@@ -6,7 +6,7 @@ from cities.models import City
 class Hotel(models.Model):
     title = models.CharField(max_length=50)
     address = models.CharField(max_length=50)
-    photo = models.ImageField()
+    photo = models.ImageField(upload_to='images')
     description = models.TextField()
     city = models.ForeignKey(City, on_delete=models.CASCADE)
 

@@ -5,11 +5,11 @@
 </head>
 <style>
     body {
-        background-color: #5CCC;
+        background-color: rgba(78, 71, 92, 0.8);
         padding: 20px;
     }
     h1 {
-        font-size: 30;
+        font-size: 50px;
     }
 </style>
 <body>
@@ -19,7 +19,7 @@
     <ul>
         {% for hotel in hotels %}
             <li><a href="/cities/{{city.id}}/places/hotels/{{hotel.id}}">{{ hotel.title }}</a>
-                <p><img scr="{{ hotel.photo }}" alt=Picture></p>
+                <p><img src="{{ hotel.photo.url }}" alt={{ hotel.photo.url }} width="800" height="600"></p>
             </li>
         {% endfor %}
     </ul>
