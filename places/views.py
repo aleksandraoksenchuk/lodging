@@ -2,7 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 
 
-from places.models import Hotel
+from places.models import Hotel, Room
 from cities.models import City
 
 
@@ -14,9 +14,14 @@ def all_hotels_in_the_city(request, id_city: int):
     return render(request, 'places/hotels/all_hotels_in_the_city.html', hotels_dict)
 
 
-# def one_hotel(request, id_hotels: int):
-#     name = City.objects.get(pk=title)
-#     return HttpResponse(name)
+def one_hotel(request, id_city: int, id_hotels: int):
+    hotel = Hotel.objects.get(id=id_hotels)
+    rooms = Room.objects.filter(hotel_id=id_hotels)
+    one_city = City.objects.get(id=id_city)
+    rooms_dict = {'hotel': hotel,
+                  'rooms_in_hotel': rooms,
+                  'city': one_city}
+    return render(request, 'places/hotels/one_hotel_in_the_city.html', rooms_dict)
 
 
 
