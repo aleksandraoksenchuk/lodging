@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reviews</title>
+</head>
+<style>
+    body {
+        background-color: rgba(123, 111, 142, 0.8);
+        padding: 20px;
+    }
+    h3 {
+        font-size: 30px;
+    }
+    a {
+        color: #1c2b58;
+        font-size: 30px;
+    }
+</style>
+<body>
+<h1>{{city.name}}</h1>
+<h2><a href="/cities/">Список всех городов</a></h2>
+    <a href="/cities/{{city.id}}/places/hotels/{{hotel.id}}">Назад</a>
+<div class="reviews">
+    <h1>Отзывы о гостинице:</h1>
+    <ul>
+    {{ hotel.title }}
+        {% for review in review_for_hotel %}
+            <li>
+                <p>Имя: <a>{{ review.name }}</a></p>
+                <p>Дата отзыва: {{ review.date }}</p>
+                <p>Отзыв:<a>{{ review.review }}</a></p>
+                <p>Рейтинг:<a>{{ review.rating }}</a></p>
+
+            </li>
+        {% endfor %}
+    </ul>
+<h1>
+    Добавить отзыв:
+</h1>
+<form action="{% url 'reviews' city.id hotel.id %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary btn-block">Добавить отзыв</button>
+</form>
+</div>
+
+</body>
+</html>

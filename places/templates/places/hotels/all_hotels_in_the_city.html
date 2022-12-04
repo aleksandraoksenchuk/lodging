@@ -15,11 +15,13 @@
 <body>
 <h1>{{city.name}}</h1>
 <h2><a href="/cities/">Список всех городов</a></h2>
+<h3><p><a href="/cities/{{ city.id}}/places/hotels/">Список всех гостиниц в городе {{city.name}}</a></p></h3>
 <div class="">
     <ul>
         {% for hotel in hotels %}
             <li><a href="/cities/{{city.id}}/places/hotels/{{hotel.id}}">{{ hotel.title }}</a>
                 <p><img src="{{ hotel.photo.url }}" alt={{ hotel.photo.url }} width="800" height="600"></p>
+
             </li>
         {% endfor %}
     </ul>

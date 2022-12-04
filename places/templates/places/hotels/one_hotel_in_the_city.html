@@ -8,30 +8,38 @@
         background-color: rgba(123, 111, 142, 0.8);
         padding: 20px;
     }
+
     h1 {
         font-size: 50px;
 
     }
+
     h2 {
         color: #000000;
     }
+
     div {
         color: #dbd0d0;
 
     }
 </style>
-<body>
-<h1>{{city.name}}</h1>
+<h1>{{ city.name }}</h1>
 <h2><a href="/cities/">Список всех городов</a></h2>
-<div class="">
-<h2 href="/cities/{{city.id}}/places/hotels/{{hotel.id}}">{{ hotel.title }}</h2>
-    <ul>
-        {% for room in rooms_in_hotel %}
-            <li><a href="#">{{ room.title }}</a>
-                <p><img src="{{ room.photo.url }}" alt={{ room.photo.url }} width="800" height="600"></p>
-            </li>
-        {% endfor %}
-    </ul>
+<h3><p><a href="/cities/{{ city.id }}/places/hotels/">Список всех гостиниц в городе {{ city.name }}</a></p></h3>
+<p class="">
+<h2 href="/cities/{{ city.id }}/places/hotels/{{ hotel.id }}">{{ hotel.title }}</h2>
+<h3><p><a href="/cities/{{ city.id }}/places/hotels/{{ hotel.id }}/reviews">Отзывы:</a></p></h3>
+<h2>
+    Для бронирования выберите тип номера:
+</h2>
+<ul>
+    {% for room in rooms_in_hotel %}
+        <li><a href="#">{{ room.title }}</a>
+            <p><img src="{{ room.photo.url }}" alt={{ room.photo.url }} width="800" height="600"></p>
+        </li>
+    {% endfor %}
+</ul>
+
 </div>
 
 </body>
