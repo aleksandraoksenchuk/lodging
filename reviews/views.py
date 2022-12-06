@@ -18,12 +18,13 @@ def review(request, id_city: int, id_hotels: int):
         hotel = Hotel.objects.get(id=id_hotels)
         reviews = Review.objects.filter(hotel_id=id_hotels)
         one_city = City.objects.get(id=id_city)
+
         review_dict = {
             'review_for_hotel': reviews,
             'hotel': hotel,
             'city': one_city,
-            'form': form
+            'form': form,
         }
-        return render(request, 'reviews/all_reviews_for_hotels.html', review_dict)
 
+        return render(request, 'reviews/all_reviews_for_hotels.html', review_dict)
 

@@ -1,7 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
-
-from places.models import Hotel, Room
+from places.forms import BookingForm
+from places.models import Hotel, Room, Booking
 from cities.models import City
 
 
@@ -21,6 +21,30 @@ def one_hotel(request, id_city: int, id_hotels: int):
                   'rooms_in_hotel': rooms,
                   'city': one_city}
     return render(request, 'places/hotels/one_hotel_in_the_city.html', rooms_dict)
+
+
+def booking_room(request, id_city: int, id_hotels: int):
+    if request.method == 'POST':
+        form = BookingForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('booking', id_city, id_hotels)
+    else:
+        form = BookingForm()
+        rooms = Room.objects.all()
+        one_booking_room = Booking.objects.all()
+    # first_date = True
+    # booking = Booking.objects.get(id=first_date)
+    # if datetime.now() > booking:
+    #     first_date = False
+    # return render(request, template, {'is_alive': is_alive})
+        booking_dict = {'rooms_in_hotel': rooms,
+                        'one_city': id_city,
+                        'hotel': id_hotels,
+                        'booking_room': one_booking_room,
+                        'form': form}
+        return render(request, 'places/booking/booking.html', booking_dict)
+
 
 
 

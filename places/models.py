@@ -30,3 +30,15 @@ class Room(models.Model):
 
     class Meta:
         ordering = ["title"]
+
+
+class Booking(models.Model):
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+    passport = models.CharField(max_length=9)
+    first_day = models.DateField(null=True)
+    last_day = models.DateField(null=True)
+    room = models.ForeignKey('Room', on_delete=models.CASCADE,)
+
+    def __str__(self):
+        return self.last_name

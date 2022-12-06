@@ -27,14 +27,14 @@
 <h2><a href="/cities/">Список всех городов</a></h2>
 <h3><p><a href="/cities/{{ city.id }}/places/hotels/">Список всех гостиниц в городе {{ city.name }}</a></p></h3>
 <p class="">
-<h2 href="/cities/{{ city.id }}/places/hotels/{{ hotel.id }}">{{ hotel.title }}</h2>
+<h2 <a href="/cities/{{ city.id }}/places/hotels/{{ hotel.id }}">{{ hotel.title }}</a></h2>
 <h3><p><a href="/cities/{{ city.id }}/places/hotels/{{ hotel.id }}/reviews">Отзывы:</a></p></h3>
 <h2>
     Для бронирования выберите тип номера:
 </h2>
 <ul>
     {% for room in rooms_in_hotel %}
-        <li><a href="#">{{ room.title }}</a>
+        <li><a href="/cities/{{ city.id }}/places/hotels/{{ hotel.id }}/booking">{{ room.title }}</a>
             <p><img src="{{ room.photo.url }}" alt={{ room.photo.url }} width="800" height="600"></p>
         </li>
     {% endfor %}

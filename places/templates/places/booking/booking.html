@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reviews</title>
+</head>
+<style>
+    body {
+        background-color: rgba(123, 111, 142, 0.8);
+        padding: 20px;
+    }
+    h3 {
+        font-size: 30px;
+    }
+    a {
+        color: #1c2b58;
+        font-size: 30px;
+    }
+</style>
+<body>
+<h1>{{city.name}}</h1>
+<h2><a href="/cities/">Список всех городов</a></h2>
+    <a href="/cities/{{one_city}}/places/hotels/{{hotel}}">Назад</a>
+
+<p>Добавить бронирование:</p>
+</h1>
+<form action="{% url 'booking' one_city hotel %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary btn-block">Добавить бронь</button>
+</form>
+</div>
+
+</body>
+</html>
